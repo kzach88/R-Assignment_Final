@@ -47,20 +47,29 @@ head(snps)
 ```
 ##After inspecting these files, i observed the following
 
-fang_et_al_genotypes.txt*
+fang_et_al_genotypes.txt
+
 Size: 11.05MB
+
 This file has 986 colums and 2782 rowsum;
+
 This file has 16 Groups in the Group column:
+
 Based on the head command, genotypes has missing values coded with '?
 
 snp_position.txt
+
 This file is 82.76KB 
+
 It has 986 rows and 15 columns
+
 This file has 339 candidates and 644 random SNPS. 
+
 SNP Position has column names for SNP ID, marker ID, Chromosome, Position, alternative and multiple positions, amplicon, feature name, gene'
 
 
 ##PART 2
+
 ##Data Processing
 
 First, I will subset the fang dataframe into two objects, one for maize (ZMMIL, ZMMLR, and ZMMMR) and one for teosinte (ZMPBA, ZMPIL, and ZMPJA) ans then select Maize or Teosinte Groups based on Group column*
@@ -212,9 +221,6 @@ write.table(DF,file = paste0("Maize_Chromosome_D",unique(DF$Chromosome),".txt"),
 return(DF)
 
 } 
-
-
-
 MaizeChromosomeD %>% 
 
 group_by(Chromosome) %>% 
@@ -234,8 +240,6 @@ write.table(DF,file = paste0("Teosinte_Chromosome_D",unique(DF$Chromosome),".txt
 return(DF)
 
 } 
-
-
 
 TeosinteChromosomeD %>% 
 
