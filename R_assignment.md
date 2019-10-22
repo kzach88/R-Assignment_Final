@@ -1,26 +1,21 @@
----
-title: "Final R"
-author: "Zach"
-date: "October 21, 2019"
-output: html_document
----
+##output: html_document
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+##workflow
 
-##Install needed Libraries
+##author: Zach Kazibwe
 
-```{r}
+## Part one
 
-library(tidyverse)
-library(reshape2)
-```
 ##Import the original data files
 
 ```{r}
 fang <- read.table("https://raw.githubusercontent.com/EEOB-BioData/BCB546X-Fall2019/master/assignments/UNIX_Assignment/fang_et_al_genotypes.txt", header = TRUE, sep="\t", stringsAsFactors = FALSE)
 snps <- read.table("https://raw.githubusercontent.com/EEOB-BioData/BCB546X-Fall2019/master/assignments/UNIX_Assignment/snp_position.txt",  header = TRUE, fill = TRUE, sep="\t", stringsAsFactors = FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(reshape2)
 ```
 #File inspection using the folowing commands
 ```{r}
@@ -43,36 +38,24 @@ str(fang)
 str(snps)
 head(fang)
 head(snps)
-
 ```
 ##After inspecting these files, i observed the following
-
-fang_et_al_genotypes.txt
-
-Size: 11.05MB
-
-This file has 986 colums and 2782 rowsum;
-
-This file has 16 Groups in the Group column:
-
-Based on the head command, genotypes has missing values coded with '?
-
-snp_position.txt
-
-This file is 82.76KB 
-
-It has 986 rows and 15 columns
-
-This file has 339 candidates and 644 random SNPS. 
-
-SNP Position has column names for SNP ID, marker ID, Chromosome, Position, alternative and multiple positions, amplicon, feature name, gene'
+"fang_et_al_genotypes.txt"
+"Size: 11.05MB"
+"This file has 986 colums and 2782 rows"
+"This file has 16 Groups in the Group column"
+"Based on the head command, genotypes has missing values coded with '?"
+"snp_position.txt"
+"This file is 82.76KB"
+"It has 986 rows and 15 columns"
+"This file has 339 candidates and 644 random SNPS"
+"SNP Position has column names for SNP ID, marker ID, Chromosome, Position, alternative and multiple positions, amplicon, feature name, gene"
 
 
 ##PART 2
-
 ##Data Processing
 
-First, I will subset the fang dataframe into two objects, one for maize (ZMMIL, ZMMLR, and ZMMMR) and one for teosinte (ZMPBA, ZMPIL, and ZMPJA) ans then select Maize or Teosinte Groups based on Group column*
+##First, I will subset the fang dataframe into two objects, one for maize (ZMMIL, ZMMLR, and ZMMMR) and one for teosinte (ZMPBA, ZMPIL, and ZMPJA) ans then select Maize or Teosinte Groups based on Group column"
 
 ```{r}
 
@@ -221,6 +204,9 @@ write.table(DF,file = paste0("Maize_Chromosome_D",unique(DF$Chromosome),".txt"),
 return(DF)
 
 } 
+
+
+
 MaizeChromosomeD %>% 
 
 group_by(Chromosome) %>% 
@@ -240,6 +226,8 @@ write.table(DF,file = paste0("Teosinte_Chromosome_D",unique(DF$Chromosome),".txt
 return(DF)
 
 } 
+
+
 
 TeosinteChromosomeD %>% 
 
