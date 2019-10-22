@@ -53,6 +53,7 @@ head(snps)
 
 
 ##PART 2
+
 ##Data Processing
 
 ##First, I will subset the fang dataframe into two objects, one for maize (ZMMIL, ZMMLR, and ZMMMR) and one for teosinte (ZMPBA, ZMPIL, and ZMPJA) ans then select Maize or Teosinte Groups based on Group column"
